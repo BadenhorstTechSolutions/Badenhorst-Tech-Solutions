@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badenhorst Tech Solutions | Professional IT Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Badenhorst Tech Solutions - Professional IT support, hardware upgrades, and Wi-Fi optimization in Bloemfontein.">
+    <meta name="keywords" content="IT Support Bloemfontein, Computer Repair, Wi-Fi Setup, SSD Upgrade">
+    <link rel="icon" type="image/x-icon" href="Badenhorst Tech Solutions Logo.ico">
+    <style>
+        :root {
+            --primary-blue: #0a192f;
+            --accent-blue: #00a8ff;
+            --whatsapp-green: #25d366;
+            --text-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+            line-height: 1.8;
+        }
+
+        /* Fixed Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.98);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent-blue); letter-spacing: -0.5px; }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-blue); }
+
+        /* Hero Section */
+        section { padding: 120px 10%; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2rem; }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 20px 45px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+
+        /* Typography & Grid */
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; border-left: 5px solid var(--accent-blue); padding-left: 20px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { background: rgba(255,255,255,0.12); transform: translateY(-10px); border-color: var(--accent-blue); }
+        .card h3 { font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem; }
+        .card p { font-size: 1.1rem; }
+
+        /* About Section Flex */
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-text { flex: 2; min-width: 300px; }
+
+        /* Back to Top */
+        #backToTop {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        #backToTop:hover { background: var(--accent-blue); transform: scale(1.1); }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; }
+
+        a { color: var(--accent-blue); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <nav>
+        <div class="logo">Badenhorst Tech Solutions</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">Meet the IT Guy</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Essential IT &<br>Networking Support</h1>
+        <p>Reliable technical solutions for home offices and residential users in Bloemfontein.</p>
+        <a href="https://wa.me/27780177720" class="btn-whatsapp">Message Me on WhatsApp</a>
+    </section>
+
+    <section id="services">
+        <h2>What We Do</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>System Tune-ups</h3>
+                <p>Speed up slow laptops, clear bloatware, and optimize your OS for peak daily performance.</p>
+            </div>
+            <div class="card">
+                <h3>Hardware Upgrades</h3>
+                <p>Pro SSD and RAM installations to give your existing hardware a massive speed boost.</p>
+            </div>
+            <div class="card">
+                <h3>Wi-Fi Optimization</h3>
+                <p>Eliminate dead zones, configure secure routers, and ensure seamless connectivity everywhere.</p>
+            </div>
+        </div>
+    </section>
+
+<section id="about" style="background: rgba(255,255,255,0.02);">
+        <h2>Meet the IT Guy</h2>
+        <div class="about-flex">
+            <div class="about-image">
+                <img src="The IT guy-Ryno.jpeg" alt="Ryno Badenhorst" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+            </div>
+            <div class="about-text">
+                <h3 style="color: var(--accent-blue); font-size: 2rem; margin-bottom: 1rem;">Ryno Badenhorst</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                    I'm a dedicated IT professional currently specializing in Network Design and Administration. 
+                    I started <strong>Badenhorst Tech Solutions</strong> to provide the Bloemfontein community 
+                    with technical support that is both expert-level and easy to understand.
+                </p>
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                    Whether it's a slow PC or a complex home network setup, I focus on delivering 
+                    reliable, long-term solutions. I believe in transparency, clear communication, 
+                    and keeping your digital life secure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" style="background: rgba(0,0,0,0.2);">
+        <h2>Our Process</h2>
+        <div class="card" style="max-width: 600px;">
+            <p><strong>1. Contact:</strong> Send a WhatsApp or Email detailing your issue.</p>
+            <p><strong>2. Assessment:</strong> We provide a quick remote or on-site diagnosis.</p>
+            <p><strong>3. Transparent Quote:</strong> You get a clear, no-obligation estimate.</p>
+            <p><strong>4. Fast Solution:</strong> We get your tech back to 100% fast.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to fix your tech? Reach out to Ryno today for professional service you can trust.</p>
+        <div class="card" style="text-align: left; max-width: 600px;">
+            <p>📍 <strong>Location:</strong> Bloemfontein & Surrounding Areas</p>
+            <p>📧 <strong>Email:</strong> <a href="mailto:ryno@badenhorstts.com">ryno@badenhorstts.com</a></p>
+            <p>📱 <strong>WhatsApp:</strong> 078 017 7720</p>
+            <p>🔵 <strong>Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61572027290555" target="_blank">Badenhorst Technology Solutions</a></p>
+            <a href="https://wa.me/27780177720" class="btn-whatsapp" style="margin-top: 25px; width: 100%; text-align: center;">Start WhatsApp Chat</a>
+        </div>
+    </section>
+
+    <a href="#top" id="backToTop">↑</a>
+
+    <footer>
+        Badenhorst Tech Solutions. Built by Ryno Badenhorst.
+    </footer>
+
+</body>
+</html>
