@@ -1,0 +1,23 @@
+{
+  "name": "badenhorst-tech-solutions",
+  "version": "1.0.0",
+  "description": "Badenhorst Tech Solutions - Professional IT Support Website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BadenhorstTechSolutions/Badenhorst-Tech-Solutions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BadenhorstTechSolutions/Badenhorst-Tech-Solutions/issues"
+  },
+  "homepage": "https://github.com/BadenhorstTechSolutions/Badenhorst-Tech-Solutions#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
