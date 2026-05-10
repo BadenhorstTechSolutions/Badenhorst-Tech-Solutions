@@ -188,6 +188,56 @@
             nav { height: auto; padding: 15px 5%; flex-direction: column; gap: 10px; }
             #backToTop { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
+        <style>
+    /* ... existing styles ... */
+
+    .about-flex { 
+        display: flex; 
+        align-items: flex-start; /* Aligns text to the top of the photo */
+        gap: 60px; 
+        flex-wrap: wrap; 
+        margin-top: 20px;
+    }
+
+    .about-image {
+        flex: 1;
+        min-width: 300px;
+        /* Removed fixed 450px height to prevent cropping */
+        height: auto; 
+        border-radius: 20px;
+        border: 2px solid var(--accent-blue);
+        overflow: hidden;
+        line-height: 0; /* Removes bottom whitespace gap */
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain; /* Ensures the whole photo fits inside */
+    }
+
+    .about-text { 
+        flex: 1.5; 
+        min-width: 300px; 
+    }
+
+    /* ... rest of your styles ... */
+</style>
+
+<section id="about" style="background: rgba(255,255,255,0.02);">
+    <h2>Meet the IT Guy</h2>
+    <div class="about-flex">
+        <div class="about-image">
+            <img src="ryno.jpeg" alt="Ryno Badenhorst">
+        </div>
+        <div class="about-text">
+            <h3 style="color: var(--accent-blue); font-size: 2rem; margin-bottom: 1.5rem;">Ryno Badenhorst</h3>
+            <p>I started <strong>Badenhorst Tech Solutions</strong> to provide the Bloemfontein community with technical support that is expert-level and easy to understand.</p>
+            <p>I focus on delivering reliable, long-term solutions with transparent communication for all your home and office tech needs.</p>
+        </div>
+    </div>
+</section>
     </style>
 </head>
 <body id="top">
