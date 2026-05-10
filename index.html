@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badenhorst Tech Solutions | Professional IT Support</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <meta name="description" content="Badenhorst Tech Solutions - Professional IT support, hardware upgrades, and Wi-Fi optimization in Bloemfontein.">
-    <meta name="keywords" content="IT Support Bloemfontein, Computer Repair, Wi-Fi Setup, SSD Upgrade">
+    <meta name="description" content="Badenhorst Tech Solutions - Professional IT support, hardware upgrades, and Wi-Fi and software optimization in Bloemfontein.">
+    <meta name="keywords" content="IT Support Bloemfontein, Computer Repair, Wi-Fi Setup, SSD Upgrade, Computer optimization">
     <link rel="icon" type="image/x-icon" href="logo.png">
     
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-
     <style>
         :root {
             --primary-blue: #0a192f;
@@ -35,9 +29,10 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--primary-blue);
             color: var(--text-white);
-            line-height: 1.8;
+            line-height: 1.6;
         }
 
+        /* Fixed Navigation Spacing */
         nav {
             position: fixed;
             top: 0;
@@ -46,9 +41,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             z-index: 1000;
             border-bottom: 2px solid var(--accent-blue);
+            height: 80px; /* Consistent height */
         }
 
         .logo { 
@@ -67,32 +63,36 @@
             font-weight: 800;
             font-size: 0.9rem;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
         }
 
-        .nav-btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        /* Section Spacing Fixes */
+        section { 
+            padding: 100px 10%; 
+            min-height: auto; /* Changed from 90vh to prevent awkward stretching */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
         }
 
-        section { padding: 120px 10%; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
-
+        /* Hero Section Refinement */
         .hero {
+            padding: 160px 10% 100px; /* Extra top padding for the fixed nav */
             text-align: center;
-            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(10, 25, 47, 0.75), rgba(10, 25, 47, 0.95)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-attachment: fixed;
-            align-items: center; /* Centers children horizontally */
+            background-position: center;
         }
 
-        h1 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.4rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2.5rem; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); opacity: 0.9; max-width: 800px; margin: 0 auto 3rem; }
 
         .nav-links { 
             display: flex; 
             gap: 15px; 
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
         
         .nav-links a {
@@ -100,42 +100,32 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 50px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
         }
 
         .nav-links a:hover { 
-            color: var(--accent-blue); 
-            background: rgba(255, 255, 255, 0.12);
             border-color: var(--accent-blue);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 168, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .btn-whatsapp-hero {
-            display: inline-block;
-            background-color: var(--whatsapp-green);
-            color: white;
-            padding: 20px 45px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.2rem;
-            transition: 0.4s;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        /* Heading Spacing */
+        h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 3rem; 
+            border-left: 5px solid var(--accent-blue); 
+            padding-left: 20px; 
         }
 
-        .btn-whatsapp-hero:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
-
-        h2 { font-size: 2.5rem; margin-bottom: 2rem; border-left: 5px solid var(--accent-blue); padding-left: 20px; }
-
+        /* Grid Spacing */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             width: 100%;
         }
@@ -146,35 +136,61 @@
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
+            height: 100%;
         }
 
-        .card:hover { background: rgba(255,255,255,0.12); transform: translateY(-10px); border-color: var(--accent-blue); }
-        .card h3 { font-size: 1.6rem; color: var(--accent-blue); margin-bottom: 1rem; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+        .card h3 { font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 1.2rem; }
 
-        .about-flex { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        /* Hours Styling */
+        .hours-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .day-name { font-weight: 600; color: var(--accent-blue); }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .open { background: rgba(37, 211, 102, 0.1); color: #25d366; border: 1px solid #25d366; }
+        .closed { background: rgba(255, 69, 58, 0.1); color: #ff453a; border: 1px solid #ff453a; }
+
+        /* Meet the IT Guy Spacing */
+        .about-flex { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; margin-top: 20px; }
 
         .about-image {
             flex: 1;
             min-width: 300px;
-            height: 400px;
+            height: 450px;
             background: var(--glass-bg);
             border-radius: 20px;
             border: 1px solid var(--accent-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
-        .about-text { flex: 2; min-width: 300px; }
+        .about-text { flex: 1.5; min-width: 300px; }
+        .about-text p { margin-bottom: 1.5rem; font-size: 1.1rem; }
 
         #backToTop {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 55px;
-            height: 55px;
-            background: rgba(255, 255, 255, 0.2);
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             color: white;
             border-radius: 50%;
@@ -182,21 +198,18 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.5rem;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 99;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        #backToTop:hover { background: var(--accent-blue); transform: scale(1.1); }
-
-        footer { text-align: center; padding: 60px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.8rem; padding: 8px 16px; }
-            nav { flex-direction: column; padding: 1rem; }
-            .logo { margin-bottom: 10px; }
+            section { padding: 80px 5%; }
+            .hero { padding: 140px 5% 60px; }
+            h2 { font-size: 2rem; margin-bottom: 2rem; }
+            nav { padding: 0 5%; height: auto; padding: 15px 5%; flex-direction: column; gap: 10px; }
+            .about-flex { gap: 30px; }
         }
     </style>
 </head>
@@ -204,7 +217,7 @@
 
     <nav>
         <div class="logo">Badenhorst Tech Solutions</div>
-        <a href="https://wa.me/27780177720" class="nav-btn-whatsapp">Message Me</a>
+        <a href="https://wa.me/27780177720?text=Hi%20Ryno,%20I'm%20visiting%20your%20website%20and%20need%20some%20IT%20help." class="nav-btn-whatsapp">Message Me</a>
     </nav>
 
    <section class="hero">
@@ -214,7 +227,7 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#about">Meet the IT Guy</a>
-            <a href="#process">Our Process</a>
+            <a href="#hours">Hours</a>
             <a href="#contact">Contact</a>
         </div>
     </section>
@@ -248,15 +261,44 @@
                 <img src="ryno.jpeg" alt="Ryno Badenhorst" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
             </div>
             <div class="about-text">
-                <h3 style="color: var(--accent-blue); font-size: 2rem; margin-bottom: 1rem;">Ryno Badenhorst</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
-                    I'm a dedicated IT professional specializing in Network Design and Administration.
-                    I started <strong>Badenhorst Tech Solutions</strong> to provide the Bloemfontein community with technical support that is expert-level and easy to understand.
-                </p>
-                <p style="font-size: 1.1rem; opacity: 0.9;">
-                    Whether it's a slow PC or a complex home network setup, I focus on delivering reliable, long-term solutions.
-                    I believe in transparency, clear communication, and keeping your digital life secure.
-                </p>
+                <h3 style="color: var(--accent-blue); font-size: 2rem; margin-bottom: 1.5rem;">Ryno Badenhorst</h3>
+                <p>I'm a dedicated IT professional specializing in Network Design and Administration.</p>
+                <p>I started <strong>Badenhorst Tech Solutions</strong> to provide the Bloemfontein community with technical support that is expert-level and easy to understand.</p>
+                <p>Whether it's a slow PC or a complex home network setup, I focus on delivering reliable, long-term solutions with transparent communication.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hours" style="background: rgba(0,0,0,0.1);">
+        <h2>Operating Hours</h2>
+        <div class="card" style="max-width: 900px; margin: 0 auto; width: 100%;">
+            <div id="shop-status" class="status-badge">Checking Status...</div>
+            
+            <div class="hours-container">
+                <div class="hours-column">
+                    <div class="hour-row">
+                        <span class="day-name">Mon - Tue</span>
+                        <span>8:00 am - 9:00 pm</span>
+                    </div>
+                    <div class="hour-row">
+                        <span class="day-name">Wed</span>
+                        <span>8:00 am - 10:00 pm</span>
+                    </div>
+                    <div class="hour-row">
+                        <span class="day-name">Thu</span>
+                        <span>8:00 am - 9:00 pm</span>
+                    </div>
+                </div>
+                <div class="hours-column">
+                    <div class="hour-row">
+                        <span class="day-name">Fri - Sat</span>
+                        <span>8:00 am - 10:00 pm</span>
+                    </div>
+                    <div class="hour-row">
+                        <span class="day-name">Sun</span>
+                        <span>Closed</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -264,9 +306,9 @@
     <section id="process" style="background: rgba(0,0,0,0.2);">
         <h2>Our Process</h2>
         <div class="card" style="max-width: 600px;">
-            <p><strong>1. Contact:</strong> Send a WhatsApp or Email detailing your issue.</p>
-            <p><strong>2. Assessment:</strong> We provide a quick remote or on-site diagnosis.</p>
-            <p><strong>3. Transparent Quote:</strong> You get a clear, no-obligation estimate.</p>
+            <p style="margin-bottom: 15px;"><strong>1. Contact:</strong> Send a WhatsApp or Email detailing your issue.</p>
+            <p style="margin-bottom: 15px;"><strong>2. Assessment:</strong> We provide a quick remote or on-site diagnosis.</p>
+            <p style="margin-bottom: 15px;"><strong>3. Transparent Quote:</strong> You get a clear, no-obligation estimate.</p>
             <p><strong>4. Fast Solution:</strong> We get your tech back to 100% fast.</p>
         </div>
     </section>
@@ -274,19 +316,45 @@
     <section id="contact">
         <h2>Get In Touch</h2>
         <div class="card" style="text-align: left; max-width: 600px;">
-            <p>📍 <strong>Location:</strong> Bloemfontein & Surrounding Areas</p>
-            <p>📧 <strong>Email:</strong> <a href="mailto:ryno@badenhorstts.com" style="color: var(--accent-blue); text-decoration: none;">ryno@badenhorstts.com</a></p>
-            <p>📱 <strong>WhatsApp/Call:</strong> 078 017 7720</p>
-            <p>🌐 <strong>Web:</strong> <a href="http://www.badenhorstts.com" target="_blank" style="color: var(--accent-blue); text-decoration: none;">www.badenhorstts.com</a></p>
-            <a href="https://wa.me/27780177720" class="btn-whatsapp-hero" style="margin-top: 25px; width: 100%; text-align: center;">Start WhatsApp Chat</a>
+            <p style="margin-bottom: 10px;">📍 <strong>Location:</strong> Bloemfontein & Surrounding Areas</p>
+            <p style="margin-bottom: 10px;">📧 <strong>Email:</strong> <a href="mailto:ryno@badenhorstts.com" style="color: var(--accent-blue); text-decoration: none;">ryno@badenhorstts.com</a></p>
+            <p style="margin-bottom: 10px;">📱 <strong>WhatsApp/Call:</strong> 078 017 7720</p>
+            <p style="margin-bottom: 25px;">🌐 <strong>Web:</strong> <a href="http://www.badenhorstts.com" target="_blank" style="color: var(--accent-blue); text-decoration: none;">www.badenhorstts.com</a></p>
+            <a href="https://wa.me/27780177720?text=Hi%20Ryno,%20I'm%20visiting%20your%20website%20and%20need%20some%20IT%20help." class="nav-btn-whatsapp" style="display: block; text-align: center; padding: 18px;">Start WhatsApp Chat</a>
         </div>
     </section>
 
     <a href="#top" id="backToTop">↑</a>
 
     <footer>
-        Badenhorst Tech Solutions. Built by Ryno Badenhorst.
+        &copy; 2026 Badenhorst Tech Solutions. Built by Ryno Badenhorst.
     </footer>
+
+    <script>
+        function updateStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const statusElement = document.getElementById('shop-status');
+            let isOpen = false;
+
+            if ((day >= 1 && day <= 2) || day === 4) { // Mon, Tue, Thu
+                if (hour >= 8 && hour < 21) isOpen = true;
+            } else if (day === 3 || day === 5 || day === 6) { // Wed, Fri, Sat
+                if (hour >= 8 && hour < 22) isOpen = true;
+            }
+
+            if (isOpen) {
+                statusElement.innerHTML = "● Open Now";
+                statusElement.className = "status-badge open";
+            } else {
+                statusElement.innerHTML = "○ Closed Now";
+                statusElement.className = "status-badge closed";
+            }
+        }
+        updateStatus();
+        setInterval(updateStatus, 60000); // Update every minute
+    </script>
 
 </body>
 </html>
