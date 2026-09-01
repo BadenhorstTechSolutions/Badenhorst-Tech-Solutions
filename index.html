@@ -55,10 +55,10 @@
 <section id="repair-ticket" style="padding: 100px 10%; background: rgba(255,255,255,0.02);">
     <form id="repairForm" action="https://formspree.io/f/xrpgpqpq" method="POST" class="ticket-form">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" autocomplete="name" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required>
 
         <label for="device">Device that needs repair:</label>
         <select id="device" name="device" required>
@@ -98,7 +98,7 @@
         });
 
         if (response.ok) {
-            window.location.href = "https://badenhorstts.com/thank-you.html";
+            window.location.href = "thank-you.html";
         } else {
             alert("Something went wrong. Please try again.");
         }
