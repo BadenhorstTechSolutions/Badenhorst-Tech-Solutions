@@ -18,6 +18,7 @@ body {
     background-color: var(--primary-blue);
     color: var(--text-white);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .closed-early-banner {
@@ -29,9 +30,9 @@ body {
     font-size: 0.95rem;
     display: none;
     position: fixed;
-    top: 80px;
+    top: 0;
     width: 100%;
-    z-index: 999;
+    z-index: 1001;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
@@ -47,6 +48,13 @@ nav {
     z-index: 1000;
     border-bottom: 2px solid var(--accent-blue);
     height: 80px;
+}
+
+nav img#adminTrigger {
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .logo { 
@@ -66,13 +74,15 @@ nav {
     font-weight: 800;
     font-size: 0.9rem;
     transition: 0.3s;
+    white-space: nowrap;
 }
+
 .or-divider {
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 600px;
-    margin: -40px auto -40px auto; 
+    margin: 20px auto; 
     color: var(--accent-blue);
     font-weight: 800;
     font-size: 1.2rem;
@@ -94,46 +104,47 @@ nav {
   max-width: 600px;
   margin: 20px auto;
   padding: 30px;
-  background-color: #111f33; /* Blends with your dark background */
+  background-color: #111f33;
   border: 1px solid #1e304a;
-  border-top: 5px solid #0096ff; /* Matches your light blue accent */
+  border-top: 5px solid #0096ff;
   border-radius: 6px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   font-family: Arial, sans-serif;
+  width: 100%;
 }
 
 .ticket-form label {
   display: block;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #e2e8f0; /* Light gray for readability */
+  color: #e2e8f0;
 }
 
 .ticket-form input,
 .ticket-form select,
 .ticket-form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
-  background-color: #0b1524; /* Dark input fields */
+  background-color: #0b1524;
   color: #ffffff;
   border: 1px solid #2a3f5f;
   border-radius: 4px;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 16px; /* Prevents iOS auto-zoom on input tap */
 }
 
 .ticket-form input:focus,
 .ticket-form select:focus,
 .ticket-form textarea:focus {
-  border-color: #0096ff; /* Light blue focus glow */
+  border-color: #0096ff;
   outline: none;
 }
 
 .ticket-form button {
   width: 100%;
-  padding: 12px;
-  background-color: #3ceb7d; /* Matches your "Message Me" button */
+  padding: 14px;
+  background-color: #3ceb7d;
   color: #000000;
   border: none;
   border-radius: 4px;
@@ -146,6 +157,7 @@ nav {
 .ticket-form button:hover {
   background-color: #2bcf65;
 }
+
 section { 
     padding: 100px 10%; 
     display: flex; 
@@ -154,31 +166,31 @@ section {
 }
 
 .hero {
-    padding: 160px 10% 100px;
+    padding: 160px 10% 80px;
     text-align: center;
     background: linear-gradient(rgba(10, 25, 47, 0.75), rgba(10, 25, 47, 0.95)), url('../background.jpg');
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: scroll; /* Changed from fixed for better mobile GPU performance */
     background-position: center;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
-.hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); opacity: 0.9; max-width: 800px; margin: 0 auto 3rem; }
+h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+.hero p { font-size: clamp(1rem, 2vw, 1.4rem); opacity: 0.9; max-width: 800px; margin: 0 auto 2rem; }
 
 .nav-links { 
     display: flex; 
-    gap: 15px; 
+    gap: 12px; 
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 15px;
 }
         
 .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.95rem;
-    padding: 12px 28px;
+    font-size: 0.9rem;
+    padding: 10px 22px;
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -187,25 +199,26 @@ h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; ma
 }
 
 h2 { 
-    font-size: 2.5rem; 
-    margin-bottom: 3rem; 
+    font-size: 2.2rem; 
+    margin-bottom: 2.5rem; 
     border-left: 5px solid var(--accent-blue); 
     padding-left: 20px; 
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
     width: 100%;
 }
 
 .card {
     background: var(--glass-bg);
-    padding: 40px;
+    padding: 35px 25px;
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.1);
     transition: 0.3s;
+    width: 100%;
 }
 
 .social-link {
@@ -227,15 +240,11 @@ h2 {
 .facebook-btn {
     background-color: #1877f2;
 }
-.social-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,168,255,0.3);
-}
 
 .hours-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
 }
 .hour-row {
     display: flex;
@@ -260,14 +269,14 @@ h2 {
 .about-flex { 
     display: flex; 
     align-items: flex-start; 
-    gap: 60px; 
+    gap: 40px; 
     flex-wrap: wrap; 
     margin-top: 20px;
 }
 
 .about-image {
     flex: 1;
-    min-width: 300px;
+    min-width: 280px;
     height: auto;
     border-radius: 20px;
     border: 2px solid var(--accent-blue);
@@ -283,7 +292,7 @@ h2 {
 
 .about-text { 
     flex: 1.5; 
-    min-width: 300px; 
+    min-width: 280px; 
 }
 
 /* Admin specific styling */
@@ -312,13 +321,14 @@ h2 {
 .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
 input:checked + .slider { background-color: var(--accent-blue); }
 input:checked + .slider:before { transform: translateX(24px); }
-        
+
+/* Back To Top Button - Positioned high enough to never overlap Botpress */
 #backToTop {
     position: fixed;
     bottom: 95px;
-    right: 30px;
-    width: 55px;
-    height: 55px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
     color: white;
@@ -327,10 +337,10 @@ input:checked + .slider:before { transform: translateX(24px); }
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     transition: 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    z-index: 9999;
+    z-index: 999;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -340,26 +350,73 @@ input:checked + .slider:before { transform: translateX(24px); }
     border-color: var(--accent-blue);
 }
 
-footer { text-align: center; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; }
+footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; }
 
+/* Mobile Optimizations */
 @media (max-width: 768px) {
-    nav { height: auto; padding: 15px 5%; flex-direction: column; gap: 10px; margin-top: 36px; }
-    #backToTop { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-    .closed-early-banner { 
-        top: 0; 
-        z-index: 1001; 
-        position: fixed; 
-        font-size: 0.85rem; 
-        padding: 8px 10px;
+    nav { 
+        height: 70px; 
+        padding: 10px 4%; 
+        flex-direction: row; 
+        align-items: center;
+        justify-content: space-between;
     }
-    section { padding: 80px 5%; }
-    .card { padding: 25px 18px; }
-    .hours-container { grid-template-columns: 1fr; gap: 0; }
-    .hour-row { font-size: 0.88rem; padding: 10px 0; }
-}
-button[aria-label*="voice" i],
-button[aria-label*="speech" i],
-button[aria-label*="record" i],
-.bpComposerButton[aria-label*="voice" i] {
-    display: none !important;
+
+    nav img#adminTrigger {
+        height: 48px !important;
+    }
+
+    .nav-btn-whatsapp {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    .closed-early-banner { 
+        font-size: 0.8rem; 
+        padding: 6px 10px;
+    }
+
+    .hero { 
+        padding: 120px 5% 50px; 
+    }
+
+    section { 
+        padding: 50px 5%; 
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card { 
+        padding: 22px 16px; 
+    }
+
+    .ticket-form {
+        padding: 20px 15px;
+    }
+
+    .hours-container { 
+        grid-template-columns: 1fr; 
+        gap: 0; 
+    }
+
+    .hour-row { 
+        font-size: 0.88rem; 
+        padding: 10px 0; 
+    }
+
+    /* Move Back To Top button above Botpress chat bubble on phones */
+    #backToTop { 
+        bottom: 95px; 
+        right: 15px; 
+        width: 42px; 
+        height: 42px; 
+        font-size: 1.1rem;
+    }
 }
