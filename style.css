@@ -315,7 +315,7 @@ input:checked + .slider:before { transform: translateX(24px); }
         
 #backToTop {
     position: fixed;
-    bottom: 30px;
+    bottom: 95px;
     right: 30px;
     width: 55px;
     height: 55px;
