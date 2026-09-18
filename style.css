@@ -357,3 +357,9 @@ footer { text-align: center; padding: 80px 20px; border-top: 1px solid rgba(255,
     .hours-container { grid-template-columns: 1fr; gap: 0; }
     .hour-row { font-size: 0.88rem; padding: 10px 0; }
 }
+button[aria-label*="voice" i],
+button[aria-label*="speech" i],
+button[aria-label*="record" i],
+.bpComposerButton[aria-label*="voice" i] {
+    display: none !important;
+}
