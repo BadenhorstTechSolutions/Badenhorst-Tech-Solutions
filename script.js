@@ -1,5 +1,5 @@
 // Set to true so public visitors see closed status by default
-const FORCE_CLOSED_EARLY = true; 
+const FORCE_CLOSED_EARLY = false; 
 
 // Secret Admin Access Trigger
 let logoClicks = 0;
