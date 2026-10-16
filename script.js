@@ -99,7 +99,7 @@ setInterval(updateStatus, 60000);
 // ===== Public Feedback =====
 // Paste your Supabase details here (setup steps are in supabase-setup.sql).
 // These two values are safe to be public. The database rules protect your data.
-const SUPABASE_URL = 'sb_publishable_hhbeT3IwXclyUiiuHUtoMw_KWAMGxvw.supabase.co';  // e.g. https://abcdxyz.supabase.co
+const SUPABASE_URL = 'hhbeT3IwXclyUiiuHUtoMw_KWAMGxvw.supabase.co';  // e.g. https://abcdxyz.supabase.co
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxbGtjYmhsY21kamRleXluYmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxNDMxNDgsImV4cCI6MjEwNzcxOTE0OH0.rbZqGwaY069EXEV8WQb7fA75O-FFiXD2dBxf-2cI6N8';  // the public "anon" or "publishable" key
 
 // Only shown while Supabase is not set up yet.
