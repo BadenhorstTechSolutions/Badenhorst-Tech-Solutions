@@ -95,3 +95,134 @@ function updateStatus() {
 
 updateStatus();
 setInterval(updateStatus, 60000);
+
+// ===== Public Feedback =====
+// Paste your Supabase details here (setup steps are in supabase-setup.sql).
+// These two values are safe to be public. The database rules protect your data.
+const SUPABASE_URL = 'sb_publishable_hhbeT3IwXclyUiiuHUtoMw_KWAMGxvw';  // e.g. https://abcdxyz.supabase.co
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxbGtjYmhsY21kamRleXluYmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxNDMxNDgsImV4cCI6MjEwNzcxOTE0OH0.rbZqGwaY069EXEV8WQb7fA75O-FFiXD2dBxf-2cI6N8';  // the public "anon" or "publishable" key
+
+// Only shown while Supabase is not set up yet.
+const PUBLIC_FEEDBACK = [];
+
+(function () {
+    const base = SUPABASE_URL.replace(/\/+$/, '');
+    const configured = Boolean(base && SUPABASE_KEY);
+    const listEl = document.getElementById('feedbackList');
+
+    function sbHeaders(extra) {
+        const h = Object.assign({ apikey: SUPABASE_KEY }, extra);
+        if (SUPABASE_KEY.startsWith('eyJ')) h.Authorization = 'Bearer ' + SUPABASE_KEY;
+        return h;
+    }
+
+    function note(msg) {
+        if (!listEl) return;
+        listEl.textContent = '';
+        const p = document.createElement('p');
+        p.className = 'feedback-empty';
+        p.textContent = msg;
+        listEl.appendChild(p);
+    }
+
+    function render(items) {
+        if (!listEl) return;
+        if (!items.length) {
+            note('No public feedback yet. Be the first to share your experience.');
+            return;
+        }
+        listEl.textContent = '';
+        items.forEach((f) => {
+            const item = document.createElement('div');
+            item.className = 'feedback-item';
+
+            const stars = document.createElement('div');
+            stars.className = 'fb-stars';
+            const r = Math.max(1, Math.min(5, Number(f.rating) || 5));
+            stars.textContent = '\u2605'.repeat(r) + '\u2606'.repeat(5 - r);
+            stars.setAttribute('aria-label', r + ' out of 5 stars');
+
+            const text = document.createElement('p');
+            text.textContent = f.text;
+
+            const meta = document.createElement('div');
+            meta.className = 'fb-meta';
+            meta.textContent = [f.name || 'Anonymous', f.date].filter(Boolean).join(' \u00b7 ');
+
+            item.append(stars, text, meta);
+            listEl.appendChild(item);
+        });
+    }
+
+    async function loadFeedback() {
+        if (!listEl) return;
+        if (!configured) { render(PUBLIC_FEEDBACK); return; }
+        note('Loading feedback...');
+        try {
+            const url = base + '/rest/v1/feedback?select=name,rating,message,created_at&approved=eq.true&order=created_at.desc&limit=50';
+            const res = await fetch(url, { headers: sbHeaders() });
+            if (!res.ok) throw new Error('Load failed');
+            const rows = await res.json();
+            render(rows.map((r) => ({
+                name: r.name,
+                rating: r.rating,
+                text: r.message,
+                date: new Date(r.created_at).toLocaleDateString('en-ZA', { month: 'long', year: 'numeric' })
+            })));
+        } catch (err) {
+            note('Feedback could not be loaded right now.');
+        }
+    }
+
+    loadFeedback();
+
+    const fbForm = document.getElementById('feedbackForm');
+    if (!fbForm) return;
+    const fbBtn = document.getElementById('feedbackBtn');
+    const fbMsg = document.getElementById('feedbackMsg');
+
+    fbForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        fbBtn.disabled = true;
+        fbMsg.className = '';
+        fbMsg.textContent = 'Sending...';
+        const fd = new FormData(fbForm);
+        try {
+            // 1) Always email the feedback to you through Formspree
+            const res = await fetch(fbForm.action, {
+                method: 'POST',
+                body: fd,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('Request failed');
+
+            // 2) If the visitor agreed to share it, save it as "pending" in Supabase
+            let saved = false;
+            if (configured && fd.get('share_publicly') === 'yes' && !fd.get('_gotcha')) {
+                try {
+                    const r = await fetch(base + '/rest/v1/feedback', {
+                        method: 'POST',
+                        headers: sbHeaders({ 'Content-Type': 'application/json', 'Prefer': 'return=minimal' }),
+                        body: JSON.stringify({
+                            name: String(fd.get('name') || '').trim() || null,
+                            rating: Number(fd.get('rating')),
+                            message: String(fd.get('feedback') || '').trim()
+                        })
+                    });
+                    saved = r.ok;
+                } catch (err) { /* the email already went through */ }
+            }
+
+            fbForm.reset();
+            fbMsg.className = 'ok';
+            fbMsg.textContent = saved
+                ? 'Thank you! Your feedback was sent and will appear here once it has been approved.'
+                : 'Thank you! Your feedback has been sent.';
+        } catch (err) {
+            fbMsg.className = 'err';
+            fbMsg.textContent = 'Could not send your feedback. Please try again or message us on WhatsApp.';
+        } finally {
+            fbBtn.disabled = false;
+        }
+    });
+})();
